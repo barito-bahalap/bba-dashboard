@@ -1,0 +1,37 @@
+{
+  "name": "bba-dashboard",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "typecheck": "tsc -b",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@barito-bahalap/assets": "*",
+    "@barito-bahalap/components": "*",
+    "@barito-bahalap/config": "*",
+    "@barito-bahalap/contexts": "*",
+    "@barito-bahalap/icons": "*",
+    "@barito-bahalap/styles": "*",
+    "@barito-bahalap/supabase": "*",
+    "@barito-bahalap/types": "*",
+    "@barito-bahalap/utils": "*",
+    "@tanstack/react-query": "^5.101.2",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.18.4"
+  },
+  "devDependencies": {
+    "@barito-bahalap/ts-config": "*",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "typescript": "^6.0.0",
+    "vite": "^7.0.0"
+  }
+}
