@@ -11,15 +11,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@barito-bahalap/assets": "*",
     "@barito-bahalap/components": "*",
-    "@barito-bahalap/config": "*",
-    "@barito-bahalap/contexts": "*",
-    "@barito-bahalap/icons": "*",
     "@barito-bahalap/styles": "*",
     "@barito-bahalap/supabase": "*",
-    "@barito-bahalap/types": "*",
     "@barito-bahalap/utils": "*",
+    "@supabase/supabase-js": "^2.117.3",
     "@tanstack/react-query": "^5.101.2",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
