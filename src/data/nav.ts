@@ -23,7 +23,7 @@ export const NAV_ITEMS: NavItem[] = [
 ];
 
 export const ROLE_LABELS: Record<Role, string> = {
-  founder_ceo: "Founder/CEO",
+  founder_ceo: "CEO",
   partner_director: "Partner/Director",
   senior_staff: "Senior Staff",
 };

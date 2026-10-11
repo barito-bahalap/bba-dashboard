@@ -24,7 +24,7 @@ export const copy = {
   },
   notProvisioned: {
     title: "Account not provisioned",
-    sub: "Your sign-in is valid but no active profile exists. Ask the Founder/CEO to provision your profile.",
+    sub: "Your sign-in is valid but no active profile exists. Ask the admin to provision your profile.",
   },
   restricted: {
     title: "Restricted",
@@ -78,7 +78,7 @@ export const copy = {
     eyebrow: "Control",
     title: "Audit log",
     intro:
-      "Append-only record of every change, chained by hash. Visible to the Founder/CEO only.",
+      "Append-only record of every change, chained by hash. Visible to the super admin only.",
   },
   notFound: { title: "Page not found", sub: "This address does not exist." },
 };

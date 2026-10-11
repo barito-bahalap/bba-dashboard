@@ -1,6 +1,6 @@
 bba-dashboard -> internal hostname only (non-obvious, not indexed, not linked from any public site)
 
-Purpose: BBA Company Control Plane for the Founder/CEO, Partners/Directors and Senior Staff. Finance, clients, projects, contracts, partner incentives (BBA-GOV-002), organization, document references and audit.
+Purpose: BBA Company Control Plane for the admins, Partners/Directors and Senior Staff. Finance, clients, projects, contracts, partner incentives (BBA-GOV-002), organization, document references and audit.
 
 Phase 1: Supabase data layer in `supabase/migrations` (0001 to 0006).
 Phase 2: app scaffold (this repo): login, mandatory MFA, idle sign-out, role guards, nine read-focused modules, founder approval flow for rule sets, payout view, audit chain check.
@@ -17,13 +17,13 @@ Order of operations:
 Design decisions:
 
 - Data firewall: clients, contracts, projects, documents, expenses are scoped by `division` through `profile_divisions`. A person with no BBM membership cannot read BBM data, regardless of role.
-- Founder/CEO role grants governance and finance control, not an editorial bypass. No table in this schema holds editorial content, by design.
+- Super admin role grants governance and finance control, not an editorial bypass. No table in this schema holds editorial content, by design.
 - Net value is derived (`gross - tax withheld`). All percentages apply to net, as GOV-002 section XI requires.
 - Incentive rules are versioned data, not code. Approved rule sets are immutable; changes need a new version and four founder approvals.
 - Agency Margin is computed as the remainder, so rounding never leaks out of BBA.
 - Payout is eligible only when cumulative receipts reach net value (`payout_status`). Warranty deductions reduce the responsible role's payable amount.
 - Role allocations are visible to founders only, locked once agreed, and need all assignees to initial.
-- `audit_log` is append-only with a hash chain. Only the Founder/CEO can read it.
+- `audit_log` is append-only with a hash chain. Only the super admin can read it.
 - Documents are references (URL and code) only. No files are stored here.
 
 Usage: `select * from compute_payout('<project uuid>');` and `select * from payout_status('<project uuid>');`

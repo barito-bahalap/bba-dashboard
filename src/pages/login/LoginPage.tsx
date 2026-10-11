@@ -43,6 +43,7 @@ export default function LoginPage() {
             required
             value={login.password}
             onChange={(e) => login.setPassword(e.target.value)}
+            obscurial
           />
 
           {login.error ? <p className="form-error">{login.error}</p> : null}
