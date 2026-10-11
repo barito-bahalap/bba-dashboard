@@ -1,0 +1,120 @@
+.shell {
+  display: grid;
+  min-height: 100dvh;
+  grid-template-rows: auto auto 1fr auto;
+  background: var(--clr-bg);
+  color: var(--clr-text);
+}
+
+.shell__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.shell__brand {
+  margin: 0;
+  font-family: var(--font-heading, serif);
+  font-size: 1.0625rem;
+}
+
+.shell__user {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.shell__who {
+  display: none;
+  flex-direction: column;
+  font-size: 0.875rem;
+  text-align: right;
+}
+
+.shell__role {
+  font-size: 0.75rem;
+  color: var(--clr-text-muted);
+}
+
+.shell__nav {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.shell__link {
+  padding: 0.5rem 0.875rem;
+  border-radius: 0.375rem;
+  font-family: var(--font-control, inherit);
+  font-size: 0.875rem;
+  white-space: nowrap;
+  color: var(--clr-text-muted);
+  text-decoration: none;
+}
+
+.shell__link:hover {
+  color: var(--clr-text);
+}
+
+.shell__link.active {
+  color: var(--clr-primary-ink);
+  box-shadow: inset 0 -2px 0 var(--clr-primary);
+  border-radius: 0;
+}
+
+.shell__main {
+  padding: 2rem 1rem 3rem;
+  min-width: 0;
+}
+
+.shell__footer {
+  padding: 1rem;
+  border-top: 1px solid var(--clr-border);
+  font-size: 0.75rem;
+  color: var(--clr-text-muted);
+}
+
+@media (min-width: 48rem) {
+  .shell__who {
+    display: flex;
+  }
+}
+
+@media (min-width: 64rem) {
+  .shell {
+    grid-template-columns: 14rem minmax(0, 1fr);
+    grid-template-rows: auto 1fr auto;
+  }
+
+  .shell__header {
+    grid-column: 1 / -1;
+    padding: 0.875rem 2rem;
+  }
+
+  .shell__nav {
+    flex-direction: column;
+    gap: 0.125rem;
+    padding: 1.5rem 1rem;
+    overflow: visible;
+    border-bottom: 0;
+    border-right: 1px solid var(--clr-border);
+  }
+
+  .shell__link.active {
+    box-shadow: inset 2px 0 0 var(--clr-primary);
+  }
+
+  .shell__main {
+    padding: 2.5rem 2.5rem 4rem;
+  }
+
+  .shell__footer {
+    grid-column: 1 / -1;
+    padding: 1rem 2rem;
+  }
+}
