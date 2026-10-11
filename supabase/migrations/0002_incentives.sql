@@ -85,13 +85,15 @@ create trigger rule_sets_approve before update on rule_sets
   for each row execute function tg_rule_set_approve();
 
 create or replace function tg_rule_set_lock() returns trigger language plpgsql as $$
-declare st text;
+declare st text; rid uuid;
 begin
-  select status into st from rule_sets where id = coalesce(new.rule_set_id, old.rule_set_id);
+  if tg_op = 'DELETE' then rid := old.rule_set_id; else rid := new.rule_set_id; end if;
+  select status into st from rule_sets where id = rid;
   if st = 'approved' then
     raise exception 'Approved rule sets are immutable. Create a new version.';
   end if;
-  return coalesce(new, old);
+  if tg_op = 'DELETE' then return old; end if;
+  return new;
 end $$;
 create trigger rule_components_lock before insert or update or delete on rule_components
   for each row execute function tg_rule_set_lock();
@@ -99,12 +101,13 @@ create trigger rule_components_lock before insert or update or delete on rule_co
 create or replace function tg_allocation_lock() returns trigger language plpgsql as $$
 declare st text; aid uuid;
 begin
-  aid := coalesce(new.allocation_id, old.allocation_id);
+  if tg_op = 'DELETE' then aid := old.allocation_id; else aid := new.allocation_id; end if;
   select status into st from role_allocations where id = aid;
   if st = 'agreed' then
     raise exception 'Agreed role allocations are locked.';
   end if;
-  return coalesce(new, old);
+  if tg_op = 'DELETE' then return old; end if;
+  return new;
 end $$;
 create trigger allocation_lines_lock before insert or update or delete on role_allocation_lines
   for each row execute function tg_allocation_lock();
@@ -145,6 +148,7 @@ returns table (
   gross_amount numeric, warranty_deduction numeric, payable_amount numeric
 )
 language plpgsql stable as $$
+#variable_conflict use_column
 declare
   v_net numeric; v_rule uuid; v_alloc uuid; v_photo boolean;
 begin

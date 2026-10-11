@@ -1,4 +1,4 @@
-create extension if not exists pgcrypto;
+create extension if not exists pgcrypto with schema extensions;
 
 create type app_role as enum ('founder_ceo', 'partner_director', 'senior_staff');
 create type division as enum ('bbt', 'bbm', 'bba');
