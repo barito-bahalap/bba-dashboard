@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@barito-bahalap/components": "^1.1.2",
+    "@barito-bahalap/config": "1.0.3",
     "@barito-bahalap/styles": "^1.1.2",
     "@barito-bahalap/supabase": "^1.0.3",
     "@barito-bahalap/utils": "^1.1.3",

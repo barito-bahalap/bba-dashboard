@@ -169,6 +169,9 @@ importers:
       '@barito-bahalap/components':
         specifier: ^1.1.2
         version: 1.1.2(react-dom@19.3.0(react@19.3.0))(react-router-dom@7.18.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react@19.3.0)
+      '@barito-bahalap/config':
+        specifier: 1.0.3
+        version: 1.0.3(react@19.3.0)
       '@barito-bahalap/styles':
         specifier: ^1.1.2
         version: 1.1.2
@@ -225,8 +228,8 @@ packages:
       react-dom: ^18 || ^19
       react-router-dom: ^6 || ^7
 
-  '@barito-bahalap/config@1.0.2':
-    resolution: {integrity: sha512-kFhNukH2OXGc5njlcrmj0ujRYq5tQPTe6DGrbTePruIII7U9xL8FbnpxCf5MkbJ8ZbBwVVKz/62Zgpc408/8Zw==, tarball: https://npm.pkg.github.com/download/@barito-bahalap/config/1.0.2/dd7e357699bfbb133316e41fdd8889419725cedf}
+  '@barito-bahalap/config@1.0.3':
+    resolution: {integrity: sha512-OdHICzgahxrNj7yk7PHinz9NWytCI0wHDOsXA5pusReG8ehvNMEpRsEj1UayQtZ6kGfsUXvz23UUy6z1weDrsQ==, tarball: https://npm.pkg.github.com/download/@barito-bahalap/config/1.0.3/34787e467c61d0537ab91d70669e436ce08cb963}
 
   '@barito-bahalap/icons@1.1.2':
     resolution: {integrity: sha512-+e4g+jPdDzRh9fxTJEXnx1u536f0/rjhEH/KyPXLYuyUpbiKijZcSEKKLXf6tznP6xbb8+F5A3lhM1GJUUh/mA==, tarball: https://npm.pkg.github.com/download/@barito-bahalap/icons/1.1.2/f6b28ba683fa5a5613af444cc21badd97dc16364}
@@ -641,14 +644,14 @@ snapshots:
 
   '@barito-bahalap/components@1.1.2(react-dom@19.3.0(react@19.3.0))(react-router-dom@7.18.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react@19.3.0)':
     dependencies:
-      '@barito-bahalap/config': 1.0.2(react@19.3.0)
+      '@barito-bahalap/config': 1.0.3(react@19.3.0)
       '@barito-bahalap/icons': 1.1.2(react@19.3.0)
       '@barito-bahalap/types': 1.0.5(react@19.3.0)
       react: 19.3.0
       react-dom: 19.3.0(react@19.3.0)
       react-router-dom: 7.18.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
 
-  '@barito-bahalap/config@1.0.2(react@19.3.0)':
+  '@barito-bahalap/config@1.0.3(react@19.3.0)':
     dependencies:
       '@barito-bahalap/types': 1.0.5(react@19.3.0)
     transitivePeerDependencies:
