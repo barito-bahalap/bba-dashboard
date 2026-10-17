@@ -5,3 +5,4 @@ export * from "./nav";
 export * from "./overview";
 export * from "./payout";
 export * from "./tones";
+export * from "./inquiry";
