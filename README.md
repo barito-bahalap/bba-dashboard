@@ -1,41 +1,150 @@
-bba-dashboard -> internal hostname only (non-obvious, not indexed, not linked from any public site)
+# BBA Dashboard
 
-Purpose: BBA Company Control Plane for the admins, Partners/Directors and Senior Staff. Finance, clients, projects, contracts, partner incentives (BBA-GOV-002), organization, document references and audit.
+Internal operations dashboard for **Barito Bahalap Agency (BBA)** and its two divisions, **BBT** (Barito Bahalap Tech, Divisi Rancang Bangun) and **BBM** (Barito Bahalap Media, Divisi Media & Komunikasi).
 
-Phase 1: Supabase data layer in `supabase/migrations` (0001 to 0006).
-Phase 2: app scaffold (this repo): login, mandatory MFA, idle sign-out, role guards, nine read-focused modules, founder approval flow for rule sets, payout view, audit chain check.
+The dashboard is the single source of truth for clients, contracts, projects, payments and recurring revenue. It is an internal tool. It is not client-facing and not a public website.
 
-Order of operations:
+## What it is and is not
 
-1. Create a NEW Supabase project, isolated from every client and public system. Never reuse the Telkom, corporate, tech or media projects.
-2. Auth settings: disable public sign-ups, enable TOTP MFA, invite users only.
-3. Run `0001` to `0005` in order in the SQL editor.
-4. Create the four founder users, then insert their `profiles` rows (`is_founder = true`) and `profile_divisions`. Insert the first row via the SQL editor, since RLS blocks bootstrap.
-5. Every table is restricted to sessions at `aal2`, so users must enrol MFA before any data is visible.
-6. Rule sets seed as `draft`. They become `approved` only after four founder rows exist in `rule_set_approvals` (enforced by trigger). Verify the percentages against the signed GOV-002 first.
+| It is                                                      | It is not                                   |
+| ---------------------------------------------------------- | ------------------------------------------- |
+| A control layer for money, commitments and delivery health | A task or project-management tool           |
+| A read-only supervision view of BBM performance            | A place to write or edit BBM content        |
+| A tracker for BBT retainers and out-of-scope work          | A tracker for client credentials or secrets |
+| Role-restricted and audited                                | A client portal                             |
 
-Design decisions:
+## Roles
 
-- Data firewall: clients, contracts, projects, documents, expenses are scoped by `division` through `profile_divisions`. A person with no BBM membership cannot read BBM data, regardless of role.
-- Super admin role grants governance and finance control, not an editorial bypass. No table in this schema holds editorial content, by design.
-- Net value is derived (`gross - tax withheld`). All percentages apply to net, as GOV-002 section XI requires.
-- Incentive rules are versioned data, not code. Approved rule sets are immutable; changes need a new version and four founder approvals.
-- Agency Margin is computed as the remainder, so rounding never leaks out of BBA.
-- Payout is eligible only when cumulative receipts reach net value (`payout_status`). Warranty deductions reduce the responsible role's payable amount.
-- Role allocations are visible to founders only, locked once agreed, and need all assignees to initial.
-- `audit_log` is append-only with a hash chain. Only the super admin can read it.
-- Documents are references (URL and code) only. No files are stored here.
+| Role            | Scope                                                           |
+| --------------- | --------------------------------------------------------------- |
+| `MASTER_ADMIN`  | Sees everything                                                 |
+| `UNIT_ADMIN`    | Sees everything that belongs to own division (BBT or BBM only)  |
+| `FINANCE_ADMIN` | Finance, invoices, payments and related records only            |
+| `UNIT_MEMBER`   | Assigned tasks, own allocation, own incentive (BBT or BBM only) |
 
-Usage: `select * from compute_payout('<project uuid>');` and `select * from payout_status('<project uuid>');`
+### Access matrix (design intent)
 
-App rules:
+The database RLS policies are the source of truth. This table is the target they must satisfy.
 
-- Separate Supabase client (`src/lib/supabase.ts`) with its own env vars and storage key. The kit auth and supabase packages are NOT used here, so no session or key is shared with any other BBA app.
-- UI role checks only hide modules. Real enforcement is RLS in the database.
-- Founder-only data (role allocations, payout) is fetched only when the profile is a founder.
-- Sessions end after 15 minutes of inactivity (`src/data/config.ts`).
-- Served with `noindex`, `Disallow: /`, `no-store` and a strict CSP (`vercel.json`). Use a non-obvious hostname and restrict by Vercel password or IP allowlist if available.
+| Module     | MASTER_ADMIN | UNIT_ADMIN                     | FINANCE_ADMIN     | UNIT_MEMBER            |
+| ---------- | ------------ | ------------------------------ | ----------------- | ---------------------- |
+| Overview   | Full         | Own division                   | Finance tiles     | Own summary            |
+| Clients    | Full         | Own division's clients         | Read              | Assigned projects only |
+| Contracts  | Full         | Own division                   | Read              | None                   |
+| Projects   | Full         | Own division                   | Read              | Assigned only          |
+| Finance    | Full         | Own division, read             | Full              | None                   |
+| Incentives | Full         | To be decided (see roadmap D3) | Payout view       | Own only               |
+| People     | Full         | Own division                   | None              | Own profile            |
+| Documents  | Full         | Own division                   | Finance documents | Assigned projects      |
+| Audit      | Full         | None                           | None              | None                   |
 
-Run (from C:\dev\bba): `npm install`, copy `.env.example` to `.env`, `npm run dev --workspace bba-dashboard`.
+## Modules and status
 
-Not in phase 2 (phase 3): create and edit forms (clients, contracts, receipts, role allocation form with initials, warranty deductions), Indonesian toggle.
+Delivery order and exit criteria are in [DEVELOPMENT_STAGES.md](./DEVELOPMENT_STAGES.md).
+
+| Module                                    | Stage   | Notes                                              |
+| ----------------------------------------- | ------- | -------------------------------------------------- |
+| Login, MFA, session                       | 1       | Scaffolded                                         |
+| Clients                                   | 1       | Page scaffolded                                    |
+| Contracts                                 | 1       | Page scaffolded                                    |
+| Projects and project detail               | 1       | Page scaffolded                                    |
+| Finance (invoices, payments, receivables) | 1       | Page scaffolded                                    |
+| Overview                                  | 1 and 2 | Page scaffolded, KPIs defined in roadmap           |
+| Pipeline                                  | 2       | Not started                                        |
+| BBT retainers                             | 2       | Not started                                        |
+| BBM read-only overview                    | 3       | Not started. Needs a data feed from the BBM system |
+| People and capacity                       | 3       | Page scaffolded                                    |
+| Documents                                 | 3       | Page scaffolded                                    |
+| Incentives and project payout             | 3       | Scaffolded. Locked until the formula is defined    |
+| Assets register (BBT)                     | 4       | Not started                                        |
+| Audit                                     | 1 and 4 | Scaffolded. Hardening in Stage 4                   |
+
+Risk and compliance is intentionally out of scope for the early phase.
+
+## Tech stack
+
+- React and TypeScript, built with Vite
+- Client-side routing with role-based route guards
+- Supabase: Postgres, Auth and Row Level Security
+- Plain CSS per component, global styles in `src/styles/app.css`
+- pnpm as package manager
+- Vercel for hosting (`vercel.json`)
+
+## Project structure
+
+```
+bba-dashboard/
+  public/                 Static assets
+  scripts/                Helper scripts
+  src/
+    app/                  App root, router, route guards
+    components/           Shared components, AppShell layout
+    contexts/session/     Session provider and context
+    data/                 Static config: navigation, columns, copy, tones
+    domain/types.ts       Shared domain types
+    hooks/                Data and auth hooks (one per concern)
+    pages/                One folder per feature (page plus css)
+    styles/app.css        Global styles
+    main.tsx              Entry point
+  supabase/migrations/    Ordered SQL migrations
+  .env.example            Required environment variables
+  vercel.json             Deployment config
+```
+
+## Getting started
+
+Prerequisites: Node.js (current LTS), pnpm, a Supabase project.
+
+```bash
+pnpm install
+cp .env.example .env      # Windows: copy .env.example .env
+# fill in the values listed in .env.example
+pnpm dev
+```
+
+Other scripts are defined in `package.json` (typically `build`, `lint` and `preview`).
+
+## Database
+
+Migrations live in `supabase/migrations` and must be applied in order.
+
+| File                   | Purpose                            |
+| ---------------------- | ---------------------------------- |
+| `0001_core.sql`        | Core tables                        |
+| `0002_incentives.sql`  | Incentive tables                   |
+| `0003_seed_gov002.sql` | Sample seed data. Development only |
+| `0004_audit.sql`       | Audit log and chain                |
+| `0005_rls.sql`         | Row Level Security policies        |
+| `0006_views.sql`       | Reporting views                    |
+
+Apply with the Supabase CLI (`supabase db push`) or run each file in order in the Supabase SQL editor.
+
+Rules for new migrations:
+
+- One migration per change, numbered sequentially, never edit an applied migration
+- Every new table gets RLS enabled and policies for each role in the same migration
+- Every policy change gets an RLS test for each role
+
+## Security notes
+
+- `.env` must never be committed. Confirm it is listed in `.gitignore`
+- Only the public (anon) Supabase key belongs in the frontend. The service-role key must never reach the browser or the repository
+- MFA is required for admin roles
+- Do not store client passwords, API keys or tokens. Store ownership, location and rotation date only
+- The frontend hides what a role should not see. The database must enforce it. Treat frontend checks as convenience, not security
+
+## Conventions
+
+- One folder per feature under `src/pages`
+- Page components do not call the database directly. Use a hook in `src/hooks`
+- Static labels, columns and navigation live in `src/data`
+- Shared types live in `src/domain/types.ts`
+- Build in slices: schema and RLS, hook, page, test, deploy
+
+## Deployment
+
+Hosted on Vercel. Set the same environment variables as `.env.example` in the Vercel project settings. Production uses its own Supabase project, separate from development.
+
+## Documentation
+
+- [DEVELOPMENT_STAGES.md](./_dev/DEVELOPMENT_STAGES.md): staged roadmap, exit criteria, decision log
