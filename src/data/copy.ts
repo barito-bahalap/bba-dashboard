@@ -1,5 +1,6 @@
 export const copy = {
   appName: "BBA Control Plane",
+  sidebarName: "Control Plane",
   confidential: "Internal use only. Confidential. Access is logged.",
   loading: "Loading...",
   login: {

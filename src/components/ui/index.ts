@@ -7,4 +7,4 @@ export {
   StatusPill,
 } from "./display";
 export { DataGrid } from "./DataGrid";
-export { BrandMark, Icon, type IconName } from "./icons";
+export { Icon, type IconName } from "./icons";

@@ -31,7 +31,7 @@
 .shell__brand-name {
   margin: 0;
   font-family: var(--font-heading);
-  font-size: var(--fs-xl);
+  /* font-size: var(--fs-xl); */
   font-weight: var(--fw-bold);
   color: var(--clr-ink);
 }
@@ -135,7 +135,9 @@
 .shell__user {
   display: flex;
   align-items: center;
+  justify-content: end;
   gap: 0.75rem;
+  flex: 1;
 }
 .shell__avatar {
   display: grid;
@@ -149,7 +151,7 @@
   font-size: var(--fs-sm-alt);
 }
 .shell__who {
-  display: none;
+  display: flex;
   flex-direction: column;
   line-height: 1.25;
 }
@@ -162,12 +164,6 @@
 }
 .shell__main {
   min-width: 0;
-}
-
-@media (min-width: 48rem) {
-  .shell__who {
-    display: flex;
-  }
 }
 
 @media (max-width: 63.99rem) {
@@ -207,5 +203,8 @@
   .shell__top {
     justify-content: flex-end;
     padding: 0.625rem 0.875rem;
+  }
+  .shell__user {
+    justify-content: space-between;
   }
 }

@@ -90,19 +90,3 @@ export function Icon({ name, size = 20 }: { name: IconName; size?: number }) {
     </svg>
   );
 }
-
-export function BrandMark({ size = 32 }: { size?: number }) {
-  return (
-    <svg viewBox="0 0 32 32" width={size} height={size} aria-hidden="true">
-      <circle
-        cx="16"
-        cy="16"
-        r="12"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="4"
-      />
-      <circle cx="16" cy="16" r="4" fill="currentColor" />
-    </svg>
-  );
-}

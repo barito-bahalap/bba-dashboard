@@ -4,7 +4,8 @@ import "./AppShell.css";
 // Hooks
 import { useSession } from "@/hooks";
 // Components
-import { BrandMark, Button, Icon, type IconName } from "@/components/ui";
+import { Button, Icon, type IconName } from "@/components/ui";
+import { BrandMark } from "./BrandMark";
 // Data
 import { copy } from "@/data/copy";
 import { ACTIVE_STAGE } from "@/data/config";
@@ -73,13 +74,15 @@ export function AppShell() {
     <div className="shell">
       <aside className="shell__side">
         <div className="shell__brand">
-          <BrandMark />
-          <p className="shell__brand-name">{copy.appName}</p>
+          <BrandMark logo />
+          <p className="shell__brand-name">{copy.sidebarName}</p>
         </div>
+
         <div className="shell__groups">
           {group("Menu", main)}
           {group("Admin", admin)}
         </div>
+
         <div className="shell__note">
           <span className="shell__note-title">Internal system</span>
           <span className="shell__note-text">{copy.confidential}</span>
@@ -90,20 +93,25 @@ export function AppShell() {
         <header className="shell__top">
           <span className="shell__crumb">{copy.appName}</span>
           <div className="shell__user">
-            <span className="shell__avatar" aria-hidden="true">
-              {initials(profile?.full_name)}
-            </span>
-            <span className="shell__who">
-              <span className="shell__name">{profile?.full_name}</span>
-              <span className="shell__role">
-                {profile ? ROLE_LABELS[profile.role] : ""}
+            <div className="stack row middle fit">
+              <span className="shell__avatar" aria-hidden="true">
+                {initials(profile?.full_name)}
               </span>
-            </span>
-            <Button variant="outline" onClick={() => void signOut()}>
-              Sign out
-            </Button>
+              <span className="shell__who">
+                <span className="shell__name">{profile?.full_name}</span>
+                <span className="shell__role">
+                  {profile ? ROLE_LABELS[profile.role] : ""}
+                </span>
+              </span>
+            </div>
+            <Button
+              label="Sign out"
+              variant="outline"
+              onClick={() => void signOut()}
+            />
           </div>
         </header>
+
         <main className="shell__main">
           <Outlet />
         </main>

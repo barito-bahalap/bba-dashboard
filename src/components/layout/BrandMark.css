@@ -1,0 +1,71 @@
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--clr-ink);
+  border-bottom: none;
+}
+
+.brand__bba-logo {
+  height: 18px;
+}
+
+.brand__bba-logo--full {
+  height: 48px;
+}
+
+.brand--on-dark {
+  color: var(--cg-white);
+}
+
+.brand__mark {
+  display: inline-flex;
+  gap: 3px;
+}
+
+.brand__dot {
+  width: 12px;
+  height: 24px;
+  background-color: var(--cg-teal);
+}
+
+.brand__dot[data-brand="media"] {
+  background-color: var(--cg-teal-light);
+}
+
+.brand--on-dark .brand__dot {
+  background-color: var(--cg-cream);
+}
+
+.brand--on-dark .brand__dot[data-brand="media"] {
+  background-color: var(--cg-orange);
+}
+
+.brand__text {
+  display: flex;
+  flex-direction: column;
+  line-height: var(--lh-tight);
+}
+
+.brand__short {
+  font-family: var(--font-heading);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-wide);
+}
+
+.brand__name {
+  display: none;
+  margin-top: 2px;
+  font-family: var(--cg-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+@media (min-width: 768px) {
+  .brand__name {
+    display: block;
+  }
+}
