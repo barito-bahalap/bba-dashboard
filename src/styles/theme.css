@@ -1,0 +1,39 @@
+/* Dashboard-level tokens only. Brand colors and fonts come from the kit. */
+:root {
+  --dash-bg: color-mix(in srgb, var(--clr-primary) 5%, var(--palette-gray-100));
+  --dash-sidebar-w: 16.5rem;
+  --dash-gap: 1.25rem;
+  --dash-radius: 1.25rem;
+  --dash-radius-sm: 0.875rem;
+  --dash-card: var(--clr-paper);
+  --dash-shadow:
+    0 1px 2px rgba(var(--palette-black-rgb), 0.04),
+    0 8px 24px rgba(var(--palette-black-rgb), 0.04);
+  --dash-hero:
+    radial-gradient(
+      120% 120% at 100% 0%,
+      color-mix(in srgb, var(--clr-primary-light) 45%, transparent) 0%,
+      transparent 55%
+    ),
+    linear-gradient(
+      150deg,
+      var(--clr-primary) 0%,
+      color-mix(in srgb, var(--clr-primary-hover) 55%, var(--palette-black))
+        100%
+    );
+  --dash-hatch: repeating-linear-gradient(
+    135deg,
+    rgba(var(--clr-primary-rgb), 0.38) 0 2px,
+    transparent 2px 6px
+  );
+  --dash-track: rgba(var(--clr-primary-rgb), 0.08);
+
+  /* Controls: no forced capitalization (emails, codes, amounts) */
+  --txt-control-transform: none;
+
+  /* Optional: sans headings like the reference. Uncomment to try.
+  --txt-h1-font: var(--font-body);
+  --txt-h2-font: var(--font-body);
+  --txt-h3-font: var(--font-body);
+  */
+}

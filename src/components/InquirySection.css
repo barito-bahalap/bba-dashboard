@@ -1,8 +1,33 @@
-.inquiry-section { display: grid; gap: 2.5rem; align-items: start; }
-@media (min-width: 64rem) { .inquiry-section { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 4rem; } }
+.inquiry-section {
+  display: grid;
+  gap: 2.5rem;
+  align-items: start;
+}
+@media (min-width: 64rem) {
+  .inquiry-section {
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: 4rem;
+  }
+}
 
-.inquiry-section__direct h3 { margin: 0 0 0.75rem; font-size: 1.125rem; }
-.inquiry-section__direct dl { margin: 0 0 1.25rem; display: grid; gap: 0.25rem; }
-.inquiry-section__direct dt { font-size: 0.8125rem; opacity: 0.7; }
-.inquiry-section__direct dd { margin: 0 0 0.75rem; }
-.inquiry-section__wa { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.inquiry-section__direct h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.125rem;
+}
+.inquiry-section__direct dl {
+  margin: 0 0 1.25rem;
+  display: grid;
+  gap: 0.25rem;
+}
+.inquiry-section__direct dt {
+  font-size: 0.8125rem;
+  opacity: 0.7;
+}
+.inquiry-section__direct dd {
+  margin: 0 0 0.75rem;
+}
+.inquiry-section__wa {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
