@@ -1,4 +1,9 @@
-export type Role = "founder_ceo" | "partner_director" | "senior_staff";
+export type Role =
+  | "MASTER_ADMIN"
+  | "UNIT_ADMIN"
+  | "FINANCE_ADMIN"
+  | "UNIT_MEMBER";
+
 export type Division = "bbt" | "bbm" | "bba";
 
 export interface Profile {

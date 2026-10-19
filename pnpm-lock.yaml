@@ -162,19 +162,22 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  '@barito-bahalap/types': ^1.1.0
+
 importers:
 
   .:
     dependencies:
       '@barito-bahalap/components':
-        specifier: ^1.8.1
-        version: 1.8.1(@barito-bahalap/config@1.1.0(react@19.3.0))(@barito-bahalap/icons@1.1.2(react@19.3.0))(@barito-bahalap/types@1.0.6(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react-router-dom@7.18.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react@19.3.0)
+        specifier: ^1.15.5
+        version: 1.16.0(@barito-bahalap/config@1.2.0(react@19.3.0))(@barito-bahalap/icons@1.1.2(react@19.3.0))(@barito-bahalap/types@1.1.0(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react-router-dom@7.18.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react@19.3.0)
       '@barito-bahalap/config':
-        specifier: ^1.1.0
-        version: 1.1.0(react@19.3.0)
+        specifier: ^1.2.0
+        version: 1.2.0(react@19.3.0)
       '@barito-bahalap/styles':
-        specifier: ^1.1.2
-        version: 1.1.2
+        specifier: ^1.4.0
+        version: 1.4.0
       '@barito-bahalap/supabase':
         specifier: ^1.0.3
         version: 1.0.3
@@ -221,26 +224,26 @@ importers:
 
 packages:
 
-  '@barito-bahalap/components@1.8.1':
-    resolution: {integrity: sha512-Dwl40CzsQ6KfBdktX4PBTYJsQkyGOvQ4PcUgauyKXwhTzxGWNiaS3jX21Kolz5rc4ileC2WUytYv7JOGdaO1Jw==, tarball: https://npm.pkg.github.com/download/@barito-bahalap/components/1.8.1/f501e53242e2390d2fbf46d6bc70a199867981e9}
+  '@barito-bahalap/components@1.16.0':
+    resolution: {integrity: sha512-Sil6Q8IV9wLzWBRDz/XzlqRWzLf4YoO+VDBx3ztiudRz13bRvvPgcWf6SyvjlmjCUY+Ok9xp36wqmnk6ykYZdw==, tarball: https://npm.pkg.github.com/download/@barito-bahalap/components/1.16.0/7b8aad1930a6275335313cc9477239ed2e47f644}
     peerDependencies:
-      '@barito-bahalap/config': ^1.1.0
+      '@barito-bahalap/config': ^1.2.0
       '@barito-bahalap/icons': ^1.1.2
-      '@barito-bahalap/types': ^1.0.6
+      '@barito-bahalap/types': ^1.1.0
       react: ^18 || ^19
       react-dom: ^18 || ^19
       react-router-dom: ^6 || ^7
 
-  '@barito-bahalap/config@1.1.0':
-    resolution: {integrity: sha512-N0LRK5wga7wcGKQSIp7EFCrSX2DrQoOqKpmoCE7RENCcxqSbzgU4douje37qsO+128HHSzkTlAsqnXnOMAaG6A==, tarball: https://npm.pkg.github.com/download/@barito-bahalap/config/1.1.0/495c33980a7d1a3dbc4c794b29da7e61e23f3d40}
+  '@barito-bahalap/config@1.2.0':
+    resolution: {integrity: sha512-qXoV0gcItSthPHuuKD3VzHR2/eZa1/0IEICYKEZq7MVorQDprA7w9tTUncqagJkx/dajb0N65j1g1W97HciaWw==, tarball: https://npm.pkg.github.com/download/@barito-bahalap/config/1.2.0/3e000528f32520fff1055d25c8d16ed6d7886d32}
 
   '@barito-bahalap/icons@1.1.2':
     resolution: {integrity: sha512-+e4g+jPdDzRh9fxTJEXnx1u536f0/rjhEH/KyPXLYuyUpbiKijZcSEKKLXf6tznP6xbb8+F5A3lhM1GJUUh/mA==, tarball: https://npm.pkg.github.com/download/@barito-bahalap/icons/1.1.2/f6b28ba683fa5a5613af444cc21badd97dc16364}
     peerDependencies:
       react: ^18 || ^19
 
-  '@barito-bahalap/styles@1.1.2':
-    resolution: {integrity: sha512-ksIWx8pqBciNz3TIrGHdaS+wf636GWfZkI6EpWAjCJ4vXpzhxrktBUM7CrL11PEMXxnYUMgAAhAUGwh4BkmG+A==, tarball: https://npm.pkg.github.com/download/@barito-bahalap/styles/1.1.2/c4cb130778904ff5b15265c9b4d80920bad79dc8}
+  '@barito-bahalap/styles@1.4.0':
+    resolution: {integrity: sha512-00S4L8fdZ5e2ygnlN/fXHx6solhPVBGX9GFhyQrzJNLv8Wyz1oF5oNkQKu60fVEYlbLCLGF5Zx+E9+MfN+/IXQ==, tarball: https://npm.pkg.github.com/download/@barito-bahalap/styles/1.4.0/7dddd990c09f031a1ee796b8c4d8ab717a422f9d}
 
   '@barito-bahalap/supabase@1.0.3':
     resolution: {integrity: sha512-HYf0lepZt23rxndYR5/f0BzkGcgjXlFZNz4XqogHiDbJCNhJA/nwdausouICEyuEtgBG5eCsDYD9X9ngSmaZAg==, tarball: https://npm.pkg.github.com/download/@barito-bahalap/supabase/1.0.3/d537bd359e5dee1386c205cbe4207ff7572635dc}
@@ -250,11 +253,8 @@ packages:
     peerDependencies:
       vite: '>=5'
 
-  '@barito-bahalap/types@1.0.5':
-    resolution: {integrity: sha512-ZRpZm/xbSUKZn29gbp761yq+pcS8uoEyYZZ9gXjJZy9IL1SYB+ASgiFWZJUYTkTclYcFoXF0ayntybJW99FUHg==, tarball: https://npm.pkg.github.com/download/@barito-bahalap/types/1.0.5/0e3db44fca517a3e870101b5db4a1ec6abde829d}
-
-  '@barito-bahalap/types@1.0.6':
-    resolution: {integrity: sha512-+3c5CorfHxj85uLo2gqRo4nYIVddzfi0SiDNgkToCpCScvDC9pl1GGmaTIkoI8UcWnG3BQ7UyqKl+U0XeThfhw==, tarball: https://npm.pkg.github.com/download/@barito-bahalap/types/1.0.6/f97b3462ca6631f08a8d6d2c102b56f9431cf85e}
+  '@barito-bahalap/types@1.1.0':
+    resolution: {integrity: sha512-DZj+uaCGjac03lseqEo7cZ2ovByHYHItdUPVHx/uNmn86Xwj7eWp0gniiCM2pYRHpSGrWAP4UqJjtbbUJ3ga1Q==, tarball: https://npm.pkg.github.com/download/@barito-bahalap/types/1.1.0/9a87aa9fb904e5e5e3d753a0c5a171ed5a2056ff}
 
   '@barito-bahalap/utils@1.1.4':
     resolution: {integrity: sha512-L3FsOo7jtwuG9dO+Q/pcsysez8vv/cjmbaMrcyEYTKdTwFj5afSy4kuYa2ETqSfS15UsnWiCF22IN+3w7jAzvQ==, tarball: https://npm.pkg.github.com/download/@barito-bahalap/utils/1.1.4/62d441407e5836129dd1aad7fa1813e34e633f69}
@@ -648,18 +648,18 @@ packages:
 
 snapshots:
 
-  '@barito-bahalap/components@1.8.1(@barito-bahalap/config@1.1.0(react@19.3.0))(@barito-bahalap/icons@1.1.2(react@19.3.0))(@barito-bahalap/types@1.0.6(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react-router-dom@7.18.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react@19.3.0)':
+  '@barito-bahalap/components@1.16.0(@barito-bahalap/config@1.2.0(react@19.3.0))(@barito-bahalap/icons@1.1.2(react@19.3.0))(@barito-bahalap/types@1.1.0(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react-router-dom@7.18.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react@19.3.0)':
     dependencies:
-      '@barito-bahalap/config': 1.1.0(react@19.3.0)
+      '@barito-bahalap/config': 1.2.0(react@19.3.0)
       '@barito-bahalap/icons': 1.1.2(react@19.3.0)
-      '@barito-bahalap/types': 1.0.6(react@19.3.0)
+      '@barito-bahalap/types': 1.1.0(react@19.3.0)
       react: 19.3.0
       react-dom: 19.3.0(react@19.3.0)
       react-router-dom: 7.18.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
 
-  '@barito-bahalap/config@1.1.0(react@19.3.0)':
+  '@barito-bahalap/config@1.2.0(react@19.3.0)':
     dependencies:
-      '@barito-bahalap/types': 1.0.5(react@19.3.0)
+      '@barito-bahalap/types': 1.1.0(react@19.3.0)
     transitivePeerDependencies:
       - react
 
@@ -667,7 +667,7 @@ snapshots:
     dependencies:
       react: 19.3.0
 
-  '@barito-bahalap/styles@1.1.2': {}
+  '@barito-bahalap/styles@1.4.0': {}
 
   '@barito-bahalap/supabase@1.0.3':
     dependencies:
@@ -679,13 +679,7 @@ snapshots:
     dependencies:
       vite: 8.3.4(@types/node@24.19.2)
 
-  '@barito-bahalap/types@1.0.5(react@19.3.0)':
-    dependencies:
-      '@barito-bahalap/icons': 1.1.2(react@19.3.0)
-    transitivePeerDependencies:
-      - react
-
-  '@barito-bahalap/types@1.0.6(react@19.3.0)':
+  '@barito-bahalap/types@1.1.0(react@19.3.0)':
     dependencies:
       '@barito-bahalap/icons': 1.1.2(react@19.3.0)
     transitivePeerDependencies:

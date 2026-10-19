@@ -1,18 +1,21 @@
 import { NavLink, Outlet } from "react-router-dom";
 // Style
-import "./layout.css";
+import "./AppShell.css";
 // Hooks
 import { useSession } from "@/hooks";
 // Components
 import { Button } from "@/components";
 // Data
 import { copy } from "@/data/copy";
+import { ACTIVE_STAGE } from "@/data/config";
 import { NAV_ITEMS, ROLE_LABELS } from "@/data/nav";
 
 export function AppShell() {
   const { profile, signOut } = useSession();
   const items = NAV_ITEMS.filter(
-    (item) => !item.roles || (profile && item.roles.includes(profile.role)),
+    (item) =>
+      item.stage <= ACTIVE_STAGE &&
+      (!item.roles || (profile && item.roles.includes(profile.role))),
   );
 
   return (

@@ -78,7 +78,7 @@ export function useIncentives() {
     actionError: approve.error?.message ?? activate.error?.message ?? null,
     pending: approve.isPending || activate.isPending,
     isFounder: Boolean(profile?.is_founder),
-    isCeo: profile?.role === "founder_ceo",
+    isMaster: profile?.role === "MASTER_ADMIN",
     myId: profile?.id ?? null,
   };
 }

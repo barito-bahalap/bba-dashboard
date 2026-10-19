@@ -15,8 +15,8 @@ import { formatIdr } from "@barito-bahalap/utils";
 export default function ProjectDetailPage() {
   const { projectId } = useParams();
   const { profile } = useSession();
-  const isFounder = Boolean(profile?.is_founder);
-  const payout = useProjectPayout(projectId, isFounder);
+  const isMaster = profile?.role === "MASTER_ADMIN";
+  const payout = useProjectPayout(projectId, isMaster);
 
   return (
     <div className="page">
@@ -28,7 +28,7 @@ export default function ProjectDetailPage() {
       <p>
         <Link to="/projects">Back to projects</Link>
       </p>
-      {!isFounder ? (
+      {!isMaster ? (
         <EmptyState
           title={payoutCopy.restrictedTitle}
           sub={payoutCopy.restrictedSub}

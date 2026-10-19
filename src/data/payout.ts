@@ -5,8 +5,8 @@ export const payoutCopy = {
     "Calculated from the agreed role allocation and the approved rule set, on net contract value. Agency Margin is the remainder.",
   eligibilityHint:
     "Payout is released only after the client invoice is fully received.",
-  restrictedTitle: "Founders only",
+  restrictedTitle: "Master admin only",
   restrictedSub:
-    "Role allocations and payout figures are visible to the four founders.",
+    "Role allocations and payout figures are visible to master admins.",
   empty: "No agreed role allocation exists for this project yet.",
 };

@@ -1,7 +1,7 @@
-// Layout
 import { Outlet } from "react-router-dom";
 import { AppShell } from "@/components/layout";
 import { ProtectedRoute, RoleGate } from "./guards";
+import { ADMIN_ROLES } from "@/data/nav";
 // Pages
 import LoginPage from "@/pages/login/LoginPage";
 import MfaPage from "@/pages/mfa/MfaPage";
@@ -32,20 +32,27 @@ export const appRoutes = [
         element: <AppShell />,
         children: [
           { index: true, element: <OverviewPage /> },
-          { path: "clients", element: <ClientsPage /> },
-          { path: "contracts", element: <ContractsPage /> },
-          { path: "projects", element: <ProjectsPage /> },
-          { path: "projects/:projectId", element: <ProjectDetailPage /> },
-          { path: "finance", element: <FinancePage /> },
-          { path: "people", element: <PeoplePage /> },
-          { path: "documents", element: <DocumentsPage /> },
           {
-            element: <RoleGate roles={["founder_ceo", "partner_director"]} />,
-            children: [{ path: "incentives", element: <IncentivesPage /> }],
+            element: <RoleGate roles={ADMIN_ROLES} />,
+            children: [
+              { path: "clients", element: <ClientsPage /> },
+              { path: "contracts", element: <ContractsPage /> },
+              { path: "projects", element: <ProjectsPage /> },
+              { path: "projects/:projectId", element: <ProjectDetailPage /> },
+              { path: "finance", element: <FinancePage /> },
+              { path: "documents", element: <DocumentsPage /> },
+            ],
           },
           {
-            element: <RoleGate roles={["founder_ceo"]} />,
-            children: [{ path: "audit", element: <AuditPage /> }],
+            element: <RoleGate roles={["MASTER_ADMIN", "UNIT_ADMIN"]} />,
+            children: [{ path: "people", element: <PeoplePage /> }],
+          },
+          {
+            element: <RoleGate roles={["MASTER_ADMIN"]} />,
+            children: [
+              { path: "incentives", element: <IncentivesPage /> },
+              { path: "audit", element: <AuditPage /> },
+            ],
           },
         ],
       },

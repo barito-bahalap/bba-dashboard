@@ -63,7 +63,7 @@ export default function IncentivesPage() {
                     Approve as founder
                   </Button>
                 ) : null}
-                {inc.isCeo && ready ? (
+                {inc.isMaster && ready ? (
                   <Button
                     type="button"
                     variant="primary"
