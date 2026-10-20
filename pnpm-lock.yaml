@@ -170,7 +170,7 @@ importers:
   .:
     dependencies:
       '@barito-bahalap/components':
-        specifier: ^1.15.5
+        specifier: ^1.16.0
         version: 1.16.0(@barito-bahalap/config@1.2.0(react@19.3.0))(@barito-bahalap/icons@1.1.2(react@19.3.0))(@barito-bahalap/types@1.1.0(react@19.3.0))(react-dom@19.3.0(react@19.3.0))(react-router-dom@7.18.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react@19.3.0)
       '@barito-bahalap/config':
         specifier: ^1.2.0
