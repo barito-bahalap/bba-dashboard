@@ -11,7 +11,7 @@
     "update:kit": "pnpm update \"@barito-bahalap/*\" --latest"
   },
   "dependencies": {
-    "@barito-bahalap/components": "^1.16.1",
+    "@barito-bahalap/components": "^1.16.2",
     "@barito-bahalap/config": "^1.2.0",
     "@barito-bahalap/styles": "^1.4.1",
     "@barito-bahalap/supabase": "^1.0.3",
